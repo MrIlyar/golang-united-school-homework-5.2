@@ -65,11 +65,11 @@ func (cache *Cache) PutTill(key, value string, deadline time.Time) {
 			timestamp: 0,
 		}
 	} else {
-		var timestampNow = time.Now().UTC().Unix()
+		var timestampDeadline = deadline.UTC().Unix()
 
 		cache.storage[key] = CachedValue{
 			value:     value,
-			timestamp: timestampNow,
+			timestamp: timestampDeadline,
 		}
 	}
 }
